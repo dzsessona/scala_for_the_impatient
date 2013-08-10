@@ -1,4 +1,4 @@
-package Chaper01_Basics.ex9
+package Chapter_01_Basics.ex9
 
 object Main extends App{
   println("first char of the string \"diego\" using head: "+ ("diego".head))

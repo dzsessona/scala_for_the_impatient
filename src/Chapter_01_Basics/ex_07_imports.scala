@@ -1,4 +1,4 @@
-package Chaper01_Basics.ex7
+package Chapter_01_Basics.ex7
 
 import util.Random
 import math.BigInt.probablePrime

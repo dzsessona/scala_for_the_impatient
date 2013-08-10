@@ -1,4 +1,4 @@
-package Chaper01_Basics.ex2
+package Chapter_01_Basics.ex2
 
 object Main extends App{
   print("import math._\n" +

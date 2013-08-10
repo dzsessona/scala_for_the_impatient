@@ -1,4 +1,4 @@
-package Chaper01_Basics.ex10
+package Chapter_01_Basics.ex10
 
 object Main extends App{
   val test = "teststring"

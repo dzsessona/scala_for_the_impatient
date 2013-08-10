@@ -1,4 +1,4 @@
-package Chaper01_Basics.ex5
+package Chapter_01_Basics.ex5
 
 object Main extends App{
   println("defined in http://www.scala-lang.org/api/current/#scala.runtime.RichInt")
