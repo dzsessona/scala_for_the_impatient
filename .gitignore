@@ -1,2 +1,4 @@
 out*
-.idea*
+.idea/*
+atlassian-ide-plugin.xml
+scala_for_the_impatient.iml
