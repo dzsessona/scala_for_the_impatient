@@ -1,14 +1,12 @@
-package Chapter_02_Funcions
+package Chapter_02_Funcions.ex6
 
 object Main extends App{
 
-  def signum(n:Int): Int = n match{
-    case 0 => 0
-    case x if x<0 => -1
-    case _ => 1
+  def allLetter(s:String): Long = {
+    var prod = 1L
+    for(c <- s) prod += c.toLong
+    prod
   }
 
-  println("signum(0): " +signum(0))
-  println("signum(-45): " +signum(-45))
-  println("signum(789): " +signum(789))
+  println("Sum of all letters: " + allLetter("Hello"))
 }

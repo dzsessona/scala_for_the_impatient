@@ -1,14 +1,13 @@
-package Chapter_02_Funcions
+package Chapter_02_Funcions.ex10
 
 object Main extends App{
 
-  def signum(n:Int): Int = n match{
-    case 0 => 0
-    case x if x<0 => -1
-    case _ => 1
+  def mypowcase(x: Double, n: Int): Double = n match{
+    case p if(p > 0 && p % 2 == 0) => {val y =mypowcase(x, n/2); y * y}
+    case p if (p > 0) => x * mypowcase(x, n - 1)
+    case p if (p == 0) => 1
+    case _ => 1 / mypowcase(x, -1 * n)
   }
-
-  println("signum(0): " +signum(0))
-  println("signum(-45): " +signum(-45))
-  println("signum(789): " +signum(789))
+  println("mypowcase(4,2): " + mypowcase(4,2) )
+  println("mypowcase(4,-2): " + mypowcase(4,-2) )
 }
