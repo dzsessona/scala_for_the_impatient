@@ -8,7 +8,7 @@ object Main extends App{
     case _ => 1
   }
 
-  println("signum(0): " +signum(0))
-  println("signum(-45): " +signum(-45))
-  println("signum(789): " +signum(789))
+  println(" signum(0): " +signum(0))
+  println(" signum(-45): " +signum(-45))
+  println(" signum(789): " +signum(789))
 }
