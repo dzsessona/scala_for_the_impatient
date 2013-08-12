@@ -1,11 +1,16 @@
 package Chapter_16_XML.ex3
 
-object Main extends App{
+import scala.xml.Text
 
-  def factorial(f:Int):Int ={
-    (f to 1 by(-1)).reduceLeft(_ * _)
-  }
-  println("factorial of 2: " + factorial(2) )
-  println("factorial of 5: " + factorial(5) )
-  println("factorial of 10: " + factorial(10) )
+object Main extends App{
+  println(<li>fred</li> match { case <li>{Text(t)}</li> => t })
+  println("""<li>fred</li> match { case <li>{Text(t)}</li> => t }""")
+  println("""<li>{"fred"}</li> match { case <li>{Text(t)}</li> => t }""")
+  println("acts differently because the match evaluates before the substitution? No idea....")
+
+  println("match uses the unapplySeq, and the two are identical:")
+  println("""scala.xml.Elem.unapplySeq(<li>{"fred"}</li>).get ->""" + scala.xml.Elem.unapplySeq(<li>{"fred"}</li>).get)
+  println("""scala.xml.Elem.unapplySeq(<li>fred</li>).get ->""" + scala.xml.Elem.unapplySeq(<li>fred</li>).get)
+
+  println("""anyway this works: <li>{"fred"}</li> match { case <li>{f @ _*}</li> => f.text }""" )
 }

@@ -1,11 +1,16 @@
 package Chapter_16_XML.ex6
 
+import java.net.URL
+import scala.xml.XML
+
 object Main extends App{
-  //just apply the fun as map and get the max
-  def largest(fun: (Int) => Int, inputs: Seq[Int]) = {
-    val index = inputs.zip(inputs.map(fun(_)))
-    index.maxBy(_._2)._1
+
+  def getHiperlinks(url:URL): List[(String,String)]={
+    val html = XML.load(url)
+    val images = (html \\ "a").toList
+    for(a <- images) yield (a.attribute("href").getOrElse("").toString, a.child.mkString)
   }
 
-  print("max value: " + largest(x => 10 * x - x * x, 1 to 10))
+  val links = getHiperlinks(new URL("http://en.wikipedia.org/wiki/XHTML"))
+  for(a <- links) println("link: " + a._1 +"\ttext: " + a._2)
 }

@@ -1,11 +1,16 @@
 package Chapter_16_XML.ex5
 
+import java.net.URL
+import scala.xml.XML
+
 object Main extends App{
-  //just apply the fun as map and get the max
-  def largest(fun: (Int) => Int, inputs: Seq[Int]) = {
-    inputs.map(fun).max
+
+  def getImgNames(url:URL)={
+    val html = XML.load(url)
+    val images = (html \\ "img")
+    images.map(_.attribute("src").getOrElse("").toString).toList
   }
 
-  println(largest(x => 10 * x - x * x, 1 to 10))
+  println(getImgNames(new URL("http://en.wikipedia.org/wiki/XHTML")).mkString("\n"))
 }
 

@@ -1,17 +1,22 @@
 package Chapter_16_XML.ex9
 
-object Main extends App {
-  def corresponds(lhs: Seq[String], rhs: Seq[Int], p: (String, Int) => Boolean): Boolean = {
-    (lhs zip rhs).map(t => p(t._1, t._2)).max
+import java.net.URL
+import scala.xml.transform.{RuleTransformer, RewriteRule}
+import scala.xml.{Null, Attribute, Elem, XML, Node}
+
+object Main extends App{
+
+  val html = XML.load(new URL("http://en.wikipedia.org/wiki/XHTML"))
+
+  val addTag = new RewriteRule {
+    override def transform(n: Node) = n match{
+      //missing a guard to add it only to the ones that don't have an alt,
+      //this doc has all alt so modifying all of them instead
+      case e @ <img/> => e.asInstanceOf[Elem] % Attribute(null,"alt", "TODO", Null)
+      case _ => n
+    }
   }
 
-  val c = Array("Ciao!", "Gilt!")
-  val d = Array("Ciao!".size, "Gilt!".size)
-  val e = Array(2, 19)
-
-  println("c: "+c.mkString(" ") )
-  println("d: "+d.mkString(" ") )
-  println("e: "+e.mkString(" ") )
-  println("corresponds(c, d, _.size == _): " + corresponds(c, d, _.size == _))
-  println("corresponds(c, e, _.size == _): " + corresponds(c, e, _.size == _))
+  val tranformed = new RuleTransformer(addTag).transform(html)
+  println(tranformed)
 }

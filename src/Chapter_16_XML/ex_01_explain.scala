@@ -1,14 +1,7 @@
 package Chapter_16_XML.ex1
 
 object Main extends App{
-  //example: values(x => x * x, -5, 5) should produce a collection of pairs (-5, 25), (-4, 16)
-  def values(fun: (Int) => Int, low: Int, high: Int){
-    val res = (low to high).map(fun)
-    val zipped = (low to high) zip res
-    for(a <- zipped )println(a)
-  }
-  //test like example
-  println("values(x => x * x, -5, 5)")
-  values(x => x * x, -5, 5)
-
+  println("<fred/>(0) returns the first node of the Node seq: " + <fred/>(0) )
+  println("<fred/>(0)(0) returns the first node of of the first node of Node seq: " + <fred/>(0)(0) )
+  println("<diego/><zambelli/><sessona/>(1) should explain: " + <diego/><zambelli/><sessona/>(1))
 }

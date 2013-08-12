@@ -1,15 +1,11 @@
 package Chapter_16_XML.ex8
 
-import scala.collection.JavaConversions._
+object Main extends App{
 
-object Main extends App {
-  val c = Array("Ciao!", "Gilt!")
-  val d = Array("Ciao!".size, "Gilt!".size)
-  val e = Array(2, 19)
+  def dl2map(seq: scala.xml.NodeSeq) ={
+    val zippedlist = ((seq \\ "dt") text).toList.zip((seq \\ "dd") text)
+    zippedlist.toMap
+  }
 
-  println("c: "+c.mkString(" ") )
-  println("d: "+d.mkString(" ") )
-  println("e: "+e.mkString(" ") )
-  println("c.corresponds(d)(_.size == _): " + c.corresponds(d)(_.size == _))
-  println("c.corresponds(e)(_.size == _): " + c.corresponds(e)(_.size == _))
+  println(dl2map(<dl><dt>A</dt><dd>1</dd><dt>B</dt><dd>2</dd></dl>))
 }

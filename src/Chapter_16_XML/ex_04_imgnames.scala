@@ -1,14 +1,19 @@
 package Chapter_16_XML.ex4
 
+import java.net.URL
+import scala.xml.XML
+
 object Main extends App{
 
-  def factorial(f:Int):Int = f match {
-    case x if(x > 1) => (f to 1 by(-1)).reduceLeft(_ * _)
-    case _ =>  (f to 1 by(-1)).foldLeft(1)(_ * _)
-  }
-  println("factorial of 1: " + factorial(1) )
-  println("factorial of 0: " + factorial(0) )
-  println("factorial of 2: " + factorial(2) )
-  println("factorial of 5: " + factorial(5) )
-  println("factorial of 10: " + factorial(10) )
+
+  val html = XML.load(new URL("http://en.wikipedia.org/wiki/XHTML"))
+  val images = (html \\ "img").filter(_.attribute("alt").isDefined)
+  val images2 = images.filter(_.attribute("alt").getOrElse("").toString.isEmpty)
+
+
+  println("""All images for this page are defined ((html \\\\ \"img\").filter(_.attribute(\"alt\").isDefined):""" )
+  println(images.mkString("\n"));
+
+  println("\nBut there are a few empty ones:")
+  println(images2.mkString("\n"));
 }
