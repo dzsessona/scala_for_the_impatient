@@ -1,5 +1,11 @@
 package Chapter_15_Annotations.ex2
 
-object Main extends App{
+import scala.deprecated
+
+@deprecated class allAnnotated  (@deprecated val s:String){
+
+  @deprecated def fun():Unit ={
+    @deprecated var bla:  String = ""
+  }
 
 }

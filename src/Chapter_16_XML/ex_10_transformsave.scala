@@ -21,7 +21,7 @@ object Main extends App{
   }
 
   val tranformed = new RuleTransformer(addTag).transform(html).toString()
-  val parsed = ConstructingParser.fromSource(tranformed,true)
+  //val parsed = ConstructingParser.fromSource(tranformed,true)
 
-  XML.save("wiki.xml", parsed.document().docElem, xmlDecl = false, enc="UTF-8")
+  //XML.save("wiki.xml", parsed.document().docElem, xmlDecl = false, enc="UTF-8")
 }
